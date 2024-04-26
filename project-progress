@@ -1,0 +1,434 @@
+<!--
+
+TUMBLR PAGE 01: PROJECT PROGRESS
+Code by Pandappuccino
+
+CREDITS:
+normalize.css by necolas
+Cappuccicons Font by Solange Rainha
+
+RULES:
+You may edit this code to suit your needs.
+You may NOT repost this code or your edits.
+You may NOT remove the credit.
+
+I needed a page to make a progress tracker for my projects, and none of the ones available were to my liking, so I made this one (partially so it would be exactly what I wanted, partially to see if I could).  It roughly matches the Anemone theme by seyche.
+
+Each section is labeled, and colors can be changed in the variables section!
+
+-->
+
+<html>
+<head>
+    <!-- BASICS -->
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{favicon}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{MetaDescription}"/>
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- NORMALIZE.CSS -->
+    <link href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" rel="stylesheet">
+    
+    <!-- CAPPUCCICONS -->
+    <script src="//pull.cappuccicons.com/cpf.js"></script>
+    
+    <style>
+        @keyframes lazyload {
+            0%   {opacity: 0;}
+            100% {opacity: 1;}
+        }
+         
+        @-webkit-keyframes lazyload {
+            0%   {opacity: 0;}
+            100% {opacity: 1;}
+        }
+         
+        @-moz-keyframes lazyload {
+            0%   {opacity: 0;}
+            100% {opacity: 1;}
+        }
+         
+        @-o-keyframes lazyload {
+            0%   {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        /* COLOR VARIABLES */
+        :root {
+            --background: #040404;
+            --text: #c9c9c9;
+            --section: #282828;
+            --accent1: #a95c68;
+            --accent2: #e28f9c;
+            --link: #a0a0a0;
+            --title: white;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 15px;
+            line-height: 21px;
+            -webkit-animation: lazyload 2s;
+            -moz-animation: lazyload 2s;
+            -o-animation: lazyload 2s;
+            animation: lazyload 2s;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent1);
+            transition: all 0.2s;
+        }
+        
+        a:hover {
+            color: var(--accent2);
+        }
+        
+        section {
+            width: 80%;
+            max-width: 650px;
+            margin: 35px auto;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background: var(--section);
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        section:first-of-type {
+            margin-top: 25px;
+        }
+        
+        section:last-of-type: {
+            margin-bottom: 20px;
+        }
+        
+        #header {
+            width: 95%;
+            margin: auto;
+            padding: 10px;
+            border-bottom: rgba(255,255,255,0.5);
+            text-align: center;
+        }
+        
+        h1.title {
+            text-transform: uppercase;
+            color: var(--title);
+        }
+        
+        .topLink {
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 5px 15px;
+        }
+        
+        .topLink:first-of-type {
+            margin-left: 0;
+        }
+        
+        .topLink:last-of-type {
+            margin-right: 0;
+        }
+        
+        hr.divider {
+            border: 0;
+            height: 1px;
+            width: 50%;
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .jumpLink {
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 5px 15px;
+            font-size: 12px;
+        }
+        
+        .jumpLink:first-of-type {
+            margin-left: 0;
+        }
+        
+        .jumpLink:last-of-type {
+            margin-right: 0;
+        }
+        
+        .info {
+            max-width: 55%;
+            padding: 5px;
+            line-height: 1.5;
+        }
+        
+        .info h2.projectTitle {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--title);
+            font-size: 18px;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--accent2);
+        }
+        
+        .info span.sectionLabel {
+            font-weight: bold;
+            color: var(--accent1);
+            text-transform: uppercase;
+        }
+        
+        span.sectionLabel:before {
+            content: "\1680 \2009";
+        }
+        
+        ul.infoLinks {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        ul.infoLinks li {
+            display: inline;
+        }
+        
+        ul.infoLinks a {
+            display: inline;
+            padding: 4px 8px;
+            border-radius: 16px;
+            background: var(--accent1);
+            color: white;
+            margin-right: 8px;
+            transition: all 0.2s;
+        }
+        
+        ul.infoLinks a:hover {
+            background: var(--accent2);
+        }
+        
+        .tag:before {
+            content: "\eb02 \2009";
+            font-family: "cappuccicons";
+            font-size: 12px;
+        }
+        
+        .page:before {
+            content: "\eb62 \2009";
+            font-family: "cappuccicons";
+            font-size: 12px;
+        }
+        
+        .bars {
+            min-width: 40%;
+            padding: 5px;
+        }
+        
+        .bars .label {
+            font-size: 12px;
+            line-height: 24px;
+        }
+        
+        .bars .label:before {
+            content: "\ec9b \2003";
+            font-family: "cappuccicons";
+        }
+        
+        .bars progress {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            width: 100%;
+            height: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .bars progress::-webkit-progress-bar {
+            border-radius: 15px;
+        }
+        
+        .bars progress::-webkit-progress-value {
+            border-radius: 15px;
+            background: var(--accent2);
+        }
+        
+        .bars progress::moz-progress-bar {
+            border-radius: 15px;
+            background: var(--accent2);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px; 
+            height: 20px;
+            background-color: var(--background);
+        }
+         
+        ::-webkit-scrollbar-track {background-color: var(--background); border-radius: 20px;}
+         
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--accent1);
+            min-height: 35px;
+            min-width: 35px;
+            border-radius: 10px;
+        }
+        
+        /* DO NOT TOUCH THIS SECTION */
+        #credit {
+            z-index: 9999999;
+            font-size:23px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 94%;
+            left: 94%;
+            transition: all 0.2s;
+        }
+        
+        #credit:hover {
+            color: var(--accent1);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 class="title">Page Title</h1>
+        
+        <a class="topLink">Link 1</a>
+        <a class="topLink">Link 2</a>
+        <a class="topLink">Link 3</a>
+        
+        <hr class="divider">
+        
+        <!-- These links jump directly to a specific project section.  Use a unique ID for each section! -->
+        
+        <a class="jumpLink" href="#project1">Jump to Project 1</a>
+        <a class="jumpLink" href="#project2">Jump to Project 2</a>
+        <a class="jumpLink" href="#project3">Jump to Project 3</a>
+    </div>
+
+    <!-- PROJECT START -->
+    <section id="project1"> <!-- Unique ID for the project; these are used for the "jumpLink" links to directly jump to the project. -->
+        <div class="info">
+            <h2 class="projectTitle">Project #1</h2>
+            
+            <!-- You can have as many of these as you want based on what you might need.  Maybe a word tracker?  Maybe a game genre?  Sky's the limit, but keep in mind these don't scroll and will offset the progress bars. -->
+            <span class="sectionLabel">Title:</span> Project title here</br>
+            <span class="sectionLabel">Section 1:</span> First detail<br>
+            <span class="sectionLabel">Section 2:</span> Second detail<br>
+            <span class="sectionLabel">Summary:</span> Summarize the project here.  This section does not scroll, so be careful.
+            
+            <!-- Use the "tag" class for a link to add a little hashtag icon, and use the "page" class to add the little link instead.  You can have multiple of each. -->
+            <ul class="infoLinks">
+                <a class="tag" href="/"><li>TAG</li></a>
+                <a class="page" href="/"><li>PROJECT PAGE</li></a>
+            </ul>
+            
+        </div>
+        
+        <!-- Label each bar according to what you need to track.  Change the value of each one based on the tracked progress.  You can add more or take away bars as needed. -->
+        <div class="bars">
+            <div class="label">Plotting</div>
+            <progress max="100" value="0"></progress>
+            
+            <div class="label">Cast</div>
+            <progress max="100" value="20"></progress>
+            
+            <div class="label">Graphics</div>
+            <progress max="100" value="40"></progress>
+            
+            <div class="label">Audio</div>
+            <progress max="100" value="60"></progress>
+            
+            <div class="label">Programming</div>
+            <progress max="100" value="80"></progress>
+            
+            <div class="label">Testing</div>
+            <progress max="100" value="100"></progress>
+        </div>
+    </section>
+    <!-- PROJECT END -->
+    
+    <section id="project2">
+        <div class="info">
+            <h2 class="projectTitle">Project #2</h2>
+            <span class="sectionLabel">Title:</span> Project title here</br>
+            <span class="sectionLabel">Section 1:</span> First detail<br>
+            <span class="sectionLabel">Section 2:</span> Second detail<br>
+            <span class="sectionLabel">Summary:</span> Summarize the project here.  This section does not scroll, so be careful.
+            
+            <ul class="infoLinks">
+                <a class="tag" href="/"><li>TAG</li></a>
+                <a class="page" href="/"><li>PROJECT PAGE</li></a>
+            </ul>
+            
+        </div>
+        
+        <div class="bars">
+            <div class="label">Plotting</div>
+            <progress max="100" value="0"></progress>
+            
+            <div class="label">Cast</div>
+            <progress max="100" value="20"></progress>
+            
+            <div class="label">Graphics</div>
+            <progress max="100" value="40"></progress>
+            
+            <div class="label">Audio</div>
+            <progress max="100" value="60"></progress>
+            
+            <div class="label">Programming</div>
+            <progress max="100" value="80"></progress>
+            
+            <div class="label">Testing</div>
+            <progress max="100" value="100"></progress>
+        </div>
+    </section>
+    
+    <section id="project3">
+        <div class="info">
+            <h2 class="projectTitle">Project #3</h2>
+            <span class="sectionLabel">Title:</span> Project title here</br>
+            <span class="sectionLabel">Section 1:</span> First detail<br>
+            <span class="sectionLabel">Section 2:</span> Second detail<br>
+            <span class="sectionLabel">Summary:</span> Summarize the project here.  This section does not scroll, so be careful.
+            
+            <ul class="infoLinks">
+                <a class="tag" href="/"><li>TAG</li></a>
+                <a class="page" href="/"><li>PROJECT PAGE</li></a>
+            </ul>
+            
+        </div>
+        
+        <div class="bars">
+            <div class="label">Plotting</div>
+            <progress max="100" value="0"></progress>
+            
+            <div class="label">Cast</div>
+            <progress max="100" value="20"></progress>
+            
+            <div class="label">Graphics</div>
+            <progress max="100" value="40"></progress>
+            
+            <div class="label">Audio</div>
+            <progress max="100" value="60"></progress>
+            
+            <div class="label">Programming</div>
+            <progress max="100" value="80"></progress>
+            
+            <div class="label">Testing</div>
+            <progress max="100" value="100"></progress>
+        </div>
+    </section>
+    
+    <!-- CREDIT--DO NOT TOUCH!! -->
+    <a id="credit" href="https://pandappuccino.tumblr.com" title="Code by Pandappuccino"><i class="cp cp-flower"></i></a>
+</body>
+</html>
