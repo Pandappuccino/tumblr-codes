@@ -35,7 +35,7 @@ Each section is labeled, and colors can be changed in the variables section!
     <link href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" rel="stylesheet">
     
     <!-- CAPPUCCICONS -->
-    <script src="//pull.cappuccicons.com/cpf.js"></script>
+    <link href="https://icons.cappuccicons.com/cpf.css" rel="stylesheet">
     
     <style>
         @keyframes lazyload {
@@ -301,9 +301,9 @@ Each section is labeled, and colors can be changed in the variables section!
     <div id="header">
         <h1 class="title">Page Title</h1>
         
-        <a href="/" class="topLink">Link 1</a>
-        <a href="/" class="topLink">Link 2</a>
-        <a href="/" class="topLink">Link 3</a>
+        <a class="topLink">Link 1</a>
+        <a class="topLink">Link 2</a>
+        <a class="topLink">Link 3</a>
         
         <hr class="divider">
         
