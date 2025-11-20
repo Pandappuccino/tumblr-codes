@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--
+
+TUMBLR THEME 01: SIMPLE REDIRECT
+Code by Pandappuccino
+
+CREDITS:
+Cappuccicons Font by Solange Rainha
+
+RULES:
+You may edit this code to suit your needs.
+You may NOT repost this code or your edits.
+You may NOT remove the credit.
+
+A quick and simple redirect page containing an askbox linked to your new page URL. I made this so in the event I decided to change my blog URL I could make a quick redirect page. The theme settings also include a "light mode" toggle, so you can change the box background and credit link colors to light or dark depending on your background.
+
+-->
+
+<html>
+    <head>
+        <link rel="shortcut icon" href="{Favicon}" />
+        <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+        <title>{Title}</title>
+        {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family={text:Title Font}:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family={text:Subtitle Font}:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- CAPPUCCICONS -->
+        <link href="https://icons.cappuccicons.com/cpf.css" rel="stylesheet" />
+
+        <!-- META TAGS -->
+        <meta name="text:Old URL" content="Old URL" />
+        <meta name="text:New URL" content="New URL" />
+
+        <meta name="image:Background" content="" />
+        <meta name="select:Background Repeat" content="repeat" />
+        <meta name="select:Background Repeat" content="repeat-x" />
+        <meta name="select:Background Repeat" content="repeat-y" />
+        <meta name="select:Background Repeat" content="no-repeat" />
+
+        <meta name="text:Title Font" content="Quintessential" />
+        <meta name="text:Subtitle Font" content="Quicksand" />
+        <meta name="select:Generic Title Font" content="serif" />
+        <meta name="select:Generic Title Font" content="sans-serif" />
+        <meta name="select:Generic Title Font" content="monospace" />
+        <meta name="select:Generic Subtitle Font" content="serif" />
+        <meta name="select:Generic Subtitle Font" content="sans-serif" />
+        <meta name="select:Generic Subtitle Font" content="monospace" />
+
+        <meta name="color:Background" content="#232323" />
+        <meta name="color:Text" content="#000000" />
+        <meta name="color:Link" content="#cdcdcd" />
+        <meta name="color:Link Hover" content="#dcdcdc" />
+
+        <meta name="if:Lightmode" content="0" />
+
+        <style>
+            @keyframes lazyload {
+                        0%   {opacity: 0;}
+                        100% {opacity: 1;}
+                    }
+
+                    @-webkit-keyframes lazyload {
+                        0%   {opacity: 0;}
+                        100% {opacity: 1;}
+                    }
+
+                    @-moz-keyframes lazyload {
+                        0%   {opacity: 0;}
+                        100% {opacity: 1;}
+                    }
+
+                    @-o-keyframes lazyload {
+                        0%   {opacity: 0;}
+                        100% {opacity: 1;}
+                    }
+
+                body {
+                    background-color: {color:Background};
+                    background-image: url('{image:Background}');
+                    background-repeat: {select:Background Repeat};
+                    color: {color:Text};
+                    font-family: '{text:Subtitle Font}', {select:Generic Subtitle Font};
+                    font-size: 1.25em;
+                    text-align: center;
+                        -webkit-animation: lazyload 2s;
+                        -moz-animation: lazyload 2s;
+                        -o-animation: lazyload 2s;
+                        animation: lazyload 2s;
+                }
+
+                p {
+                    padding: 0!important;
+                    margin: 0!important;
+                }
+
+                a {
+                    color: {color:Link};
+                    text-decoration: none;
+                    transition: all 0.3s;
+                }
+
+                a:hover {
+                    color: {color:Link Hover};
+                }
+                
+                hr {
+                    width: 75%;
+                    margin-bottom: 15px;
+                    margin-top: 0;
+                    border-color: {color:Link Color};
+                }
+
+                #main {
+                    width: 60vw;
+                    max-width: 750px;
+                    min-width:300px;
+                    height: auto;
+                    margin: 15vh auto;
+                    {block:ifLightmode}
+                    background: rgba(255,255,255,0.35);
+                    box-shadow: 0 0 5px white;
+                    {/block:ifLightmode}
+                    {block:ifNotLightmode}
+                    background: rgba(0,0,0,0.35);
+                    box-shadow: 0 0 5px black;
+                    {/block:ifNotLightmode}
+                    padding: 10px;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                }
+
+                .oldurl {
+                    font-size: 2em;
+                }
+
+                .newurl {
+                    font-size: 3em;
+                    font-family: '{text:Title Font}', {select:Generic Title Font};
+                }
+
+                /* DO NOT TOUCH THIS SECTION */
+                    #credit {
+                        z-index: 9999999;
+                        font-size:23px;
+                        text-align: center;
+                        {block:ifLightmode}
+                        color: white;
+                        {/block:ifLightmode}
+                        {block:ifNotLightmode}
+                        color:black;
+                        {/block:ifNotLightmode}
+                        position: fixed;
+                        top: 94%;
+                        left: 94%;
+                        transition: all 0.2s;
+                    }
+
+                    #credit:hover {
+                        color: {color:Link Hover};
+                    }
+        </style>
+    </head>
+
+    <body>
+        <div id="main">
+            <p class="oldurl">{text:Old URL}</p>
+            <p>has relocated to</p>
+            <p class="newurl">
+                <a href="https://{text:New URL}.tumblr.com">{text:New URL}</a>
+            </p>
+            <hr>
+            <iframe
+                frameborder="0"
+                scrolling="no"
+                width="90%"
+                height="300"
+                src="https://www.tumblr.com/ask_form/{text:New URL}.tumblr.com"
+                style="background-color: transparent; overflow: hidden"
+                id="ask_form"
+            ></iframe
+            ><!--[if IE
+                ]><script type="text/javascript">
+                    document.getElementById("ask_form").allowTransparency = true;
+                </script><!
+            [endif]-->
+        </div>
+
+        <!-- CREDIT--DO NOT TOUCH!! -->
+        <a id="credit" href="https://pandappuccino.tumblr.com" title="Code by Pandappuccino"
+            ><i class="cp cp-flower"></i
+        ></a>
+    </body>
+</html>
