@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon" href="{Favicon}">
+    <link rel="apple-touch-icon-precomposed" href="{Favicon}">
+    <meta name="description" content="{block:Description}{block:IndexPage}{MetaDescription}{/block:IndexPage}{/block:Description}{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}"/>
+    <meta property="og:description" content="{block:Description}{block:IndexPage}{MetaDescription}{/block:IndexPage}{/block:Description}{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="theme-color" content="{AccentColor}">
+    {block:PermalinkPage}{block:Posts}{block:NotReblog}
+    <meta name="author" content="{Name}">
+    {/block:NotReblog}{/block:Posts}{/block:PermalinkPage}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b6a222e7c8.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="//static.tumblr.com/gtjt4bo/mXBrpdj0n/unblue-polls.css" rel="stylesheet">
+    
+    <meta name="image:Header" content="https://placehold.co/1000x250">
+    <meta name="image:Event" content="https://placehold.co/500x250">
+
+    <meta name="color:Background" content="#ffffff">
+    <meta name="color:Header Background" content="#ffffff">
+    <meta name="color:Module Background" content="#ffffff">
+    <meta name="color:Topbar Background" content="#ffffff">
+    <meta name="color:Post Background" content="#ffffff">
+    
+    <meta name="color:Text" content="#000000">
+    <meta name="color:Header Text" content="#000000">
+    <meta name="color:Module Headers" content="#ff0000">
+    <meta name="color:Module Text" content="#000000">
+    <meta name="color:Module Labels" content="#ffffff">
+    <meta name="color:Post Text" content="#000000">
+    
+    <meta name="color:Topbar Links" content="#ff0000">
+    <meta name="color:Links" content="#000000">
+    <meta name="color:Links Hover" content="#ff0000">
+    <meta name="color:Tags" content="#000000">
+    <meta name="color:Tags Hover" content="#ffffff">
+    <meta name="color:Module Links" content="#ff0000">
+    <meta name="color:Module Links Hover" content="#000000">
+    
+    <meta name="color:Accent" content="#ff0000">
+    
+    <meta name="text:Header Color Rotation" content="60">
+    <meta name="text:Title" content="Blog Title">
+    <meta name="text:Info Establishment Date" content="XX/XX/XXXX">
+    <meta name="text:Info Members" content="XX">
+    <meta name="text:Info Characters" content="XX">
+    <meta name="text:Event Title" content="Event 01">
+    <meta name="text:Event Start" content="12/02/2026">
+    <meta name="text:Event End" content="25/02/2026">
+    <meta name="text:Event Description" content="Event description here. Adjust as needed. Can use basic HTML tags.">
+    <meta name="text:Event Link" content="">
+        
+    <meta name="select:Event Type" content="Lore Event">
+    <meta name="select:Event Type" content="Mini Event">
+    <meta name="select:Event Type" content="Exploration">
+    <meta name="select:Event Type" content="Holiday">
+    <meta name="select:Event Type" content="Member Event">
+        
+    <meta name="if:Custom Title" content="0">
+    <meta name="if:Active Event" content="0">
+
+    <style>
+        :root {
+        	--bgColor: {color:Background};
+        	--accent: {color:Accent};
+        	--text: {color:Text};
+        	--links: {color:Links};
+        	--linksHover: {color:Links Hover};
+        }
+        
+        @keyframes lazyload {
+        	0%   {opacity: 0;}
+        	100% {opacity: 1;}
+        }
+        
+        @-webkit-keyframes lazyload {
+        	0%   {opacity: 0;}
+        	100% {opacity: 1;}
+        }
+        
+        @-moz-keyframes lazyload {
+        	0%   {opacity: 0;}
+        	100% {opacity: 1;}
+        }
+        
+        @-o-keyframes lazyload {
+        	0%   {opacity: 0;}
+        	100% {opacity: 1;}
+        }
+        
+        .iframe-controls--desktop {
+            position:fixed;
+            top:0px;
+            right:0px;
+            z-index:999999999999;
+            -webkit-transform:scale(0.6,0.6);
+            -webkit-transform-origin: 100% 0%;
+            -ms-transform-origin:100% 0%;
+            -ms-transform:scale(0.6,0.6);
+            transform:scale(0.6,0.6);
+            transform-origin:100% 0%;
+        }
+        
+        * {
+        	box-sizing: border-box!important;
+        }
+        
+        .poll-post {
+        	--Poll-Question-Font-Size: 16px;
+        	--Poll-Option-Background-Color: #fcfcfc;
+        	--Poll-Option-Corner-Rounding: 18px;
+        	--Poll-Option-Border-Size: 2px;
+        	--Poll-Option-Border-Color: {color:Accent};
+        	--Poll-Option-Padding: 15px;
+        	--Poll-Option-Font-Size: 13px;
+        	--Poll-Option-Spacing: 10px;
+        	--Poll-Option-Text-Color: #666666;
+        	--Poll-Option-HOVER-Border-Color: #cfdae4;
+        	--Poll-Option-HOVER-Background-Color: {color:Accent};
+        	--Poll-Option-HOVER-Text-Color: #1a1b1d;
+        	--Poll-Option-HOVER-Speed: 0.4s;
+        } 
+        
+        /* NPF Content Hider */
+        .tmblr-alt-text-helper {
+        	display: none;
+        }
+        
+        body, html {
+        	padding: 0;
+        	margin: 0;
+        }
+        
+        body {
+        	animation: lazyload 1.5s;
+        	font-family: 'Funnel Display', sans-serif;
+        	font-size: 12px;
+        	background: {color:Background};
+        	color: {color:Text};
+        }
+        
+        h1, h2 {
+        	font-family: 'Anta', monospace;
+        }
+        
+        a {
+        	text-decoration: none;
+        	font-weight: bold;
+        	color: {color:Links};
+        	transition: all 0.3s;
+        }
+        
+        a:hover {
+        	color: {color:Links Hover};
+        }
+        
+        blockquote, .quote {
+        	border-left: 3px solid {color:Accent};
+        	padding-left: 10px;
+        }
+        
+        .npf_quote {
+        	font-family: 'Anta', monospace!important;
+        	font-size: 25px;
+        }
+        .npf_chat {
+        	font-family: 'Anta', monospace!important;
+        }
+        
+        #topbar {
+            position: sticky;
+            display: flex;
+            justify-content: start;
+            padding: 10px 0;
+            top: 0;
+            width: 100%;
+            height: 35px;
+            z-index: 15;
+            border-bottom: 3px solid {color:Topbar Links};
+            background: {color:Topbar Background};
+            box-sizing: border-box!important;
+        }
+        
+        #topmenu {
+            display: flex;
+            height: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        #topmenu a {
+            display: block;
+            height: 32px;
+            line-height: 32px;
+            width: 75px;
+            background: {color:Topbar Background};
+            color: {color:Topbar Links};
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        #topmenu a:hover {
+            color: {color:Topbar Background};
+            background: {color:Topbar Links};
+        }
+        
+        #header {
+            width: 1000px;
+            height: 250px;
+            margin: 25px auto;
+            background: url('{image:Header}');
+            text-align: center;
+            line-height: 250px;
+            filter: hue-rotate({text:Header Color Rotation}deg);
+            cursor: default;
+        }
+        
+        #header h1 {
+            padding: 0;
+            font-size: 75px;
+            line-height: 250px;
+            text-transform: uppercase;
+            font-style: italic;
+            font-weight: bold;
+            color: {color:Header Text};
+            filter: hue-rotate(-{text:Header Color Rotation}deg);
+            -webkit-text-stroke: 1px {color:Accent};
+        }
+        
+        #sidebar {
+            width: 250px;
+        }
+        
+        .module {
+            width: 100%;
+            height: auto;
+            margin-bottom: 25px;
+            border-left: 3px solid {color:Accent};
+            padding-left: 8px;
+            background: {color:Module Background};
+            color: {color:Module Text};
+        }
+        
+        .module:last-of-type {
+            margin-bottom: 50px;
+        }
+        
+        .module-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid {color:Accent};
+            color: {color:Module Header};
+        }
+        
+        .module-head h2 {
+            font-family: 'Anta', monospace;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        
+        .module-icon {
+            display: block;
+            font-size: 16px;
+            height: 24px;
+            width: 24px;
+        }
+        
+        .module-body {
+            text-align: justify;
+            padding: 8px 0 0 0;
+        }
+        
+        .admin, .social, .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-bottom: 1px dotted {color:Accent};
+            text-transform: uppercase;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: {color:Links};
+            transition: all 0.3s;
+        }
+        
+        .admin img {
+            height: 45px;
+        }
+        
+        .admin:last-of-type, .social:last-of-type, .nav:last-of-type {
+            border: 0;
+        }
+        
+        .admin:hover, .social:hover, .nav:hover {
+            color: {color:Links Hover};
+        }
+        
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .info span:first-of-type {
+            background: {color:Accent};
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: 'Anta', sans-serif;
+            padding: 4px;
+            color: {color:Module Labels};
+        }
+        
+        .schedule {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .schedule-date {
+            width: 25%;
+            padding: 8px;
+            background: {color:Accent};
+            color: {color:Module Labels};
+            text-align: center;
+            font-family: 'Anta', sans-serif;
+        }
+        
+        .day {
+            font-size: 16px;
+            font-weight: bold
+        }
+        
+        .month {
+            text-transform: uppercase;
+        }
+        
+        .schedule-info {
+            width: 65%;
+            text-align: right;
+        }
+        
+        .schedule-name {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .schedule-desc {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        .event {
+            max-width: 100%;
+            margin-bottom: 8px;
+        }
+        
+        .readmore {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Anta', monospace;
+            font-size: 14px;
+            background: {color:Accent};
+            padding: 8px;
+            color: {color:Module Labels};
+            transition: all 0.3s
+        }
+        
+        .readmore:hover {
+            color: {color:Accent};
+            background: {color:Module Background};
+            letter-spacing: 1px;
+        }
+        
+        form {
+            display: flex;
+            justify-content: space-between;
+        }
+                    
+        input[type=text] {
+            width: 75%;
+            background: rgba(255,255,255,0.75);
+            color: {color:Text};
+            border: 1px solid {color:Accent};
+        }
+                    
+        input[type=submit] {
+            width: 20%;
+            border: 0;
+            background: {color:Accent};
+            color: {color:Module Labels};
+            border: 1px solid;
+            border-color: {color:Accent};
+            transition: all 0.3s;
+        }
+        
+        input[type=submit]:hover {
+            color: {color:Accent};
+            background: {color:Module Background};
+        }
+        
+        #content {
+        	width: 800px;
+        }
+        
+        .post {
+        	width: 750px;
+        	margin: 0 auto 30px auto;
+        	background: {color:Post Background};
+        }
+        
+        .post_body {
+        	width: 700px;
+        	border: 1px solid {color:Accent};
+        	box-shadow: -5px 5px 0 {color:Accent}, 0 5px 0 {color:Accent};
+        }
+        
+        .post_content {
+        	padding: 15px;
+        }
+        
+        .question {
+            background: {color:Accent};
+            color: {color:Post Background};
+            padding: 5px 10px;
+            margin-bottom: 5px;
+        }
+        
+        .question b {
+            text-transform: uppercase;
+            font-family: 'Anta', monospace;
+        }
+        
+        .post_caption {
+        	margin-top: 13px;
+        }
+        
+        .post_tags {
+        	width: 100%;
+        	margin: 0;
+        	padding: 8px;
+        	background: red;
+        	color: white;
+        }
+        
+        .post_tags a {
+            color: {color:Tags};
+            transition: all 0.3s;
+        }
+        
+        .post_tags a:hover {
+            color: {color:Tags Hover};
+        }
+        
+        .post_info {
+        	background: {color:Accent};
+        	color: {color:Tags};
+        	width: 100px;
+        	margin: 0;
+        	padding: 12px;
+        	width: 50px;
+        	transition: all 0.3s;
+        }
+        
+        .post_info:hover {
+        	color: {color:Tags Hover};
+        }
+        
+        .post img, .post video {
+        	filter: opacity(70%) grayscale(80%);
+        	transition: all 0.3s;
+        }
+        
+        .post img:hover, .post video:hover {
+        	filter: opacity(100%) grayscale(0%);
+        }
+        
+        .notebox {
+        	background: {color:Accent};
+        	color: {color:Text};
+        	margin-bottom: 55px;
+        }
+        
+        ol.notes {
+        	list-style-type: none;
+        	margin: 0!important;
+        	padding: 0!important;
+        }
+        
+        ol.notes li.note {
+        	padding: 5px 15px;
+        	margin-bottom: 8px;
+        }
+        
+        ol.notes li.note img.avatar {
+        	display: none;
+        }
+        
+        ol.notes a {
+        	color: {color:Background};
+        }
+        
+        ol.notes a:hover {
+        	color: inherit;
+        }	
+        
+        #pagination {
+            height: 35px;
+            width: 600px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        #pagination a {
+            display: inline-block;
+            height: 25px;
+            width: 25px;
+            background: {color:Accent};
+            color: {color:Tags};
+            font-size: 14px;
+            line-height: 26px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        #pagination a:hover {
+            color: {color:Tags Hover};
+        }
+        
+        #pagination span {
+            font-style: italic;
+            text-align: center;
+            width: 50px;
+            height: 25px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topbar">
+        <div id="topmenu">
+            <a href="/">home</a>
+            <a href="/contact">contact</a>
+            <a href="/archive">archive</a>
+        </div>
+    </div>
+    
+    <div id="header">
+        <h1>{Title}</h1>
+    </div>
+    
+    <div id="main" class=" w-100 d-flex flex-row justify-content-around align-items-start">
+        <!-- SIDEBAR MODULES -->
+        <div id="sidebar">
+            <div class="module" id="about">
+                <div class="module-head">
+                    <h2>About</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <p><b>PROJECT: GENESIS</b> is a sci-fi fantasy MFRP with a focus on interpersonal relationships and planetary exploration. Board the Space Station ALETHEIA, the last ark of survival for the Austrini Star System following the collapse of its sun, and assist the survivors of the system in finding a new home for the future of their people.</p>
+                </div>
+            </div>
+
+            <div class="module" id="search">
+                <div class="module-head">
+                    <h2>Search</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <form action="/search" method=get>
+                        <input type="text" name="q" value="{SearchQuery}">
+                        <input type="submit" value="GO">
+                    </form>
+                </div>
+            </div>
+
+            <div class="module" id="qlink">
+                <div class="module-head">
+                    <h2>Navigation</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    {block:Pages}
+                    <a class="nav" href="{URL}">
+                        <span>{Label}</span>
+                        <i class="fa-solid fa-angles-right"></i>
+                    </a>
+                    {/block:Pages}
+                </div>
+            </div>
+
+            <div class="module" id="admins">
+                <div class="module-head">
+                    <h2>Admins</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <a class="admin" href="">
+                        <img src="https://placehold.co/45">
+                        <span>Admin Citrine</span>
+                    </a>
+                    <a class="admin" href="">
+                        <img src="https://placehold.co/45">
+                        <span>Admin Ruby</span>
+                    </a>
+                    <a class="admin" href="">
+                        <img src="https://placehold.co/45">
+                        <span>Admin Chrysoberyl</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="module" id="socmed">
+                <div class="module-head">
+                    <h2>Social Media</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <a class="social" href="/">
+                        <span>
+				<i class="fa-brands fa-twitter"></i>
+			</span>
+                        <span>Twitter</span>
+                    </a>
+                    <a class="social" href="/">
+                        <span>
+				<i class="fa-brands fa-bluesky"></i>
+			</span>
+                        <span>Bluesky</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="module" id="info">
+                <div class="module-head">
+                    <h2>Information</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="info">
+                        <span>Established</span>
+                        <span>{text:Info Establishment Date}</span>
+                    </div>
+                    <div class="info">
+                        <span>Members</span>
+                        <span>{text:Info Members}</span>
+                    </div>
+                    <div class="info">
+                        <span>Characters</span>
+                        <span>{text:Info Characters}</span>
+                    </div>
+                    <div class="info">
+                        <span>Server Time</span>
+                        <span onload="displayClock()" id="time"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module" id="schedule">
+                <div class="module-head">
+                    <h2>Schedule</h2>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-calendar"></i>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="schedule">
+                        <div class="schedule-date">
+                            <span class="day">20</span><br>
+                            <span class="month">july</span>
+                        </div>
+                        <div class="schedule-info">
+                            <span class="schedule-name">Group Opening</span><br>
+                            <span class="schedule-desc">Official opening date</span>
+                        </div>
+                    </div>
+                    <div class="schedule">
+                        <div class="schedule-date">
+                            <span class="day">15</span><br>
+                            <span class="month">apr</span>
+                        </div>
+                        <div class="schedule-info">
+                            <span class="schedule-name">Pre-Registration</span><br>
+                            <span class="schedule-desc">Pre-registration and reservations open</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            {block:IfActiveEvent}
+                <div class="module" id="event">
+                    <div class="module-head">
+                        <h2>
+                            Active Event
+                        <h2>
+                        <div class="module-icon">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                    </div>
+                    
+                <div class="module-body">
+                    <img class="event" src="{image:Event}">
+                    <div class="info">
+                        <span>Event Title</span>
+                        <span>{text:Event Title}</span>
+                    </div>
+                    <div class="info">
+                        <span>Start Date</span>
+                        <span>{text:Event Start}</span>
+                    </div>
+                    <div class="info">
+                        <span>End Date</span>
+                        <span>{text:Event End}</span>
+                    </div>
+                    <div class="info">
+                        <span>Event Type</span>
+                        <span>{select:Event Type}</span>
+                    </div>
+                    <p style="margin-top:15px">{text:Event Description}</p>
+                    <a class="readmore" href="{text:Event Link}">Event Post <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                </div>
+            {/block:IfActiveEvent}
+            
+            {block:IfNotActiveEvent}
+                <div class="module" id="event">
+                    <div class="module-head">
+                        <h2>
+                            Previous Event
+                        <h2>
+                        <div class="module-icon">
+                            <i class="fa-solid fa-box-archive"></i>
+                        </div>
+                    </div>
+                    
+                <div class="module-body">
+                    <img class="event" src="{image:Event}">
+                    <div class="info">
+                        <span>Event Title</span>
+                        <span>{text:Event Title}</span>
+                    </div>
+                    <div class="info">
+                        <span>Event Type</span>
+                        <span>{select:Event Type}</span>
+                    </div>
+                    <p style="margin-top:15px">{text:Event Description}</p>
+                    <a class="readmore" href="{text:Event Link}">Event Post <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                </div>
+            {/block:IfNotActiveEvent}
+        </div>
+
+        <!-- POSTS -->
+        <div id="content">
+            {block:Posts}
+            {block:Text}
+            <div class="post d-flex flex-row justify-content-start align-items-start">
+                <div class="post_body">
+                    <div class="post_content">
+                        {block:Title}
+                        <h1>{Title}</h1>{/block:Title} {Body}
+                    </div>
+
+                    {block:HasTags}
+                    <div class="post_tags d-flex justify-content-around">
+                        {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                </div>
+
+                <a href="{Permalink}">
+                    <div class="post_info d-flex flex-column justify-content-between align-items-center">
+                        {block:Date}
+                        <span style="font-size: 20px">{DayOfMonth}</span>
+                        <span>{ShortMonth}</span> {/block:Date}
+                    </div>
+                </a>
+            </div>
+
+            {block:PostNotes}
+            <div class="notebox p-2 mb-3">
+                {PostNotes}
+            </div>
+            {/block:PostNotes}
+            {/block:Text}
+            
+            {block:Photo}
+            <div class="post d-flex flex-row justify-content-start align-items-start">
+                <div class="post_body">
+                    <div class="post_content">
+                        <img src="{PhotoURL-500}" title="{PhotoAlt}"> {block:Caption}
+                        <div class="post_caption">
+                            {Caption}
+                        </div>
+                        {/block:Caption}
+                    </div>
+
+                    {block:HasTags}
+                    <div class="post_tags d-flex justify-content-around">
+                        {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                </div>
+
+                <a href="{Permalink}">
+                    <div class="post_info d-flex flex-column justify-content-between align-items-center">
+                        {block:Date}
+                        <span style="font-size: 20px">{DayOfMonth}</span>
+                        <span>{ShortMonth}</span> {/block:Date}
+                    </div>
+                </a>
+            </div>
+
+            {block:PostNotes}
+            <div class="notebox p-2 mb-3">
+                {PostNotes}
+            </div>
+            {/block:PostNotes}
+            {/block:Photo}
+            
+            {block:Panorama}
+            <div class="post d-flex flex-row justify-content-start align-items-start">
+                <div class="post_body">
+                    <div class="post_content">
+                        <img src="{PhotoURL-Panorama}" title="{PhotoAlt}"> {block:Caption}
+                        <div class="post_caption">
+                            {Caption}
+                        </div>
+                        {/block:Caption}
+                    </div>
+
+                    {block:HasTags}
+                    <div class="post_tags d-flex justify-content-around">
+                        {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                </div>
+
+                <a href="{Permalink}">
+                    <div class="post_info d-flex flex-column justify-content-between align-items-center">
+                        {block:Date}
+                        <span style="font-size: 20px">{DayOfMonth}</span>
+                        <span>{ShortMonth}</span> {/block:Date}
+                    </div>
+                </a>
+            </div>
+
+            {block:PostNotes}
+            <div class="notebox p-2 mb-3">
+                {PostNotes}
+            </div>
+            {/block:PostNotes}
+            {/block:Panorama}
+            
+            {block:Photoset}
+            <div class="post d-flex flex-row justify-content-start align-items-start">
+                <div class="post_body">
+                    <div class="post_content">
+                        <img src="{Photoset-500}" title="{PhotoAlt}"> {block:Caption}
+                        <div class="post_caption">
+                            {Caption}
+                        </div>
+                        {/block:Caption}
+                    </div>
+
+                    {block:HasTags}
+                    <div class="post_tags d-flex justify-content-around">
+                        {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                </div>
+
+                <a href="{Permalink}">
+                    <div class="post_info d-flex flex-column justify-content-between align-items-center">
+                        {block:Date}
+                        <span style="font-size: 20px">{DayOfMonth}</span>
+                        <span>{ShortMonth}</span> {/block:Date}
+                    </div>
+                </a>
+            </div>
+
+            {block:PostNotes}
+            <div class="notebox p-2 mb-3">
+                {PostNotes}
+            </div>
+            {/block:PostNotes}
+            {/block:Photoset}
+            
+            {block:Quote}
+            <div class="post d-flex flex-row justify-content-start align-items-start">
+                <div class="post_body">
+                    <div class="post_content">
+                        <h2 class="quote">{Quote}</h2>
+                        {block:Source}
+                        <div class="caption" style="text-align: right;">
+                            <i class="fa-solid fa-minus"></i> <i>{Source}</i>
+                        </div>
+                        {/block:Source}
+                    </div>
+
+                    {block:HasTags}
+                    <div class="post_tags d-flex justify-content-around">
+                        {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                </div>
+
+                <a href="{Permalink}">
+                    <div class="post_info d-flex flex-column justify-content-between align-items-center">
+                        {block:Date}
+                        <span style="font-size: 20px">{DayOfMonth}</span>
+                        <span>{ShortMonth}</span> {/block:Date}
+                    </div>
+                </a>
+            </div>
+
+            {block:PostNotes}
+            <div class="notebox p-2 mb-3">
+                {PostNotes}
+            </div>
+            {/block:PostNotes}
+            {/block:Quote}
+            
+            {block:Answer}
+            <div class="post d-flex flex-row justify-content-start align-items-start">
+                <div class="post_body">
+                    <div class="post_content">
+                        <div class="question">
+                            <b>{Asker}</b> asked:<br>
+                            {Question}
+                        </div>
+                        {Answer}
+                    </div>
+
+                    {block:HasTags}
+                    <div class="post_tags d-flex justify-content-around">
+                        {block:Tags}
+                        <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                    </div>
+                    {/block:HasTags}
+                </div>
+
+                <a href="{Permalink}">
+                    <div class="post_info d-flex flex-column justify-content-between align-items-center">
+                        {block:Date}
+                        <span style="font-size: 20px">{DayOfMonth}</span>
+                        <span>{ShortMonth}</span> {/block:Date}
+                    </div>
+                </a>
+            </div>
+
+            {block:PostNotes}
+            <div class="notebox p-2 mb-3">
+                {PostNotes}
+            </div>
+            {/block:PostNotes}
+            {/block:Answer}
+            
+            {/block:Posts}
+            
+            {block:Pagination}
+            <div id="pagination" class="mt-1 mb-5">
+                <a id="firstpage" href="/" title="First Page"><i class="fa-solid fa-angles-left"></i></a>
+                <a id="prevpage" href="{PreviousPage}" title="Previous Page"><i class="fa-solid fa-caret-left"></i></a>
+                <span id="pagetotal">{CurrentPage} / {TotalPages}</span>
+                <a id="nextpage" href="{NextPage}" title="Next Page"><i class="fa-solid fa-caret-right"></i></a>
+                <a id="lastpage" href="/page/{TotalPages}" title="Last Page"><i class="fa-solid fa-angles-right"></i></a>
+            </div>
+            {/block:Pagination}
+        </div>
+    </div>
+
+    <script>
+        const clock = document.getElementById("time");
+        const time = new Date();
+        
+        function displayClock() {
+        	let serverTime = time.toLocaleString("en-US", {
+        		timeZone: "America/New_York"
+        	});
+        	clock.innerHTML = serverTime;
+        	console.log = serverTime;
+        	time.setTime(Date.now());
+        };
+
+        displayClock();
+        setInterval(displayClock, 1000);
+    </script>
+</body>
+
+</html>
